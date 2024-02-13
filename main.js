@@ -36,7 +36,7 @@ function render() {
                 <div class="task-done">${taskList[i].taskContent}</div>
                 <div>
                     <button onclick="toggleComplete('${taskList[i].id}')">Check</button>
-                    <button onclick="deleteTask('${taskList[i].id}')>Delete</button>
+                    <button onclick="deleteTask('${taskList[i].id}')">Delete</button>
                 </div>
             </div>`;
         }else {
