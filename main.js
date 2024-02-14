@@ -21,9 +21,13 @@ function addTask() {
         taskContent: taskInput.value,
         isComplete: false
     }
+    if(taskInput.value == ""){
+        window.alert("내용을 입력해주세요.")
+    }else{
     taskList.push(task);
     console.log(taskList)
     render()
+    }
 }
 
 function render() {
@@ -52,6 +56,7 @@ function render() {
     }
 
     document.getElementById("task-board").innerHTML = resultHTML;
+    taskInput.value = ""
 }
 
 function toggleComplete(id) {
@@ -76,4 +81,5 @@ function deleteTask(id){
 
 function randomIDGenerate() {
     return '_' + Math.random().toString(36).substr(2, 9);
+    // 출처 https://gist.github.com/CoralSilver/afd60a5a423168d0d4a0f996ad021384
 }
