@@ -114,7 +114,7 @@ function filter(event){
     }
 
     filterList = []
-    
+
     if(mode === "all"){
         render()
     }else if(mode === "ongoing"){
@@ -134,9 +134,13 @@ function filter(event){
     }
 }
 
-
-
 function randomIDGenerate() {
     return '_' + Math.random().toString(36).substr(2, 9);
     // 출처 https://gist.github.com/CoralSilver/afd60a5a423168d0d4a0f996ad021384
+}
+
+function enterkey() {
+    if(window.event.keyCode == 13){
+        addTask()
+    }
 }
