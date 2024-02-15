@@ -107,8 +107,14 @@ function deleteTask(id){
 }
 
 function filter(event){
-    mode = event.target.id
+    if(event){
+        mode = event.target.id
+    }else{
+        mode = mode
+    }
+
     filterList = []
+    
     if(mode === "all"){
         render()
     }else if(mode === "ongoing"){
