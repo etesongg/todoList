@@ -25,13 +25,14 @@ body {
 }
 
 #under-line {
-    height: 4px;
     background-color: pink;
     position: absolute;
-    width: 60px;
+    height: 4px;
+    width: 0px;
+    top: 0px;
     left: 0px;
-    top: 54px;
     padding: 0px;
+    transition: 0.5s; /* 부드럽게 넘어감 */
 }
 
 .task {

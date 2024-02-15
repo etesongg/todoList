@@ -12,17 +12,26 @@
 
 let taskInput = document.getElementById("task-input");
 let addButton = document.getElementById("add-button");
+let underLine = document.getElementById("under-line");
 let tabs = document.querySelectorAll(".task-taps div");
 let taskList = [];
 let mode = "all";
 let filterList = [];
 
 addButton.addEventListener("click", addTask);
+tabs.forEach(tabs=>tabs.addEventListener("click", (e)=>underLineIndicator(e)))
+
 
 for(let i=1; i<tabs.length; i++){
     tabs[i].addEventListener("click", function (event) {
         filter(event);
     });
+}
+
+function underLineIndicator(e){
+    underLine.style.left = e.currentTarget.offsetLeft + "px";
+    underLine.style.width = e.currentTarget.offsetWidth + "px";
+    underLine.style.top = e.currentTarget.offsetHeight + "px";
 }
 
 function addTask() {
@@ -43,12 +52,13 @@ function render() {
     // 1. 내가 선택한 탭에 따라서
     // 2. 리스트를 달리 보여준다
     let list = []
+    let resultHTML = '';
+    
     if(mode === "all"){
         list = taskList
     }else if(mode == "ongoing" || mode === "done"){
         list = filterList
     }
-    let resultHTML = '';
 
     for(let i=0; i<list.length; i++) {
         if(list[i].isComplete == true) {
@@ -93,7 +103,7 @@ function deleteTask(id){
             break;
         }
     }
-    render()
+    filter()
 }
 
 function filter(event){
@@ -117,6 +127,7 @@ function filter(event){
         render();
     }
 }
+
 
 
 function randomIDGenerate() {
