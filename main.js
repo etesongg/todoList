@@ -71,8 +71,8 @@ function render() {
             <div id="pin-marker" class="${pinClass}" onclick="pinMarker('${list[i].id}')"></div>
             <div class="${taskClass}">${list[i].taskContent}</div>
             <div>
-                <button onclick="toggleComplete('${list[i].id}')">Check</button>
-                <button onclick="deleteTask('${list[i].id}')">Delete</button>
+                <button class="btn btn-secondary" onclick="toggleComplete('${list[i].id}')">Check</button>
+                <button class="btn btn-secondary" onclick="deleteTask('${list[i].id}')">Delete</button>
             </div>
         </div>`;
         }  
