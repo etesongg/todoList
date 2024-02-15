@@ -48,3 +48,18 @@ body {
 .task-taps div {
     cursor: pointer;
 }
+
+#pin-marker {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.pinned {
+    background-image: url(images/pinned.png);
+}
+
+.pin {
+    background-image: url(images/pin.png);
+}

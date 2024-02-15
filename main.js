@@ -38,7 +38,8 @@ function addTask() {
     let task = {
         id: randomIDGenerate(),
         taskContent: taskInput.value,
-        isComplete: false
+        isComplete: false,
+        isPinned: false
     }
     if(taskInput.value == ""){
         window.alert("내용을 입력해주세요.")
@@ -61,29 +62,25 @@ function render() {
     }
 
     for(let i=0; i<list.length; i++) {
-        if(list[i].isComplete == true) {
-            resultHTML +=`
-            <div class="task">
-                <div class="task-done">${list[i].taskContent}</div>
-                <div>
-                    <button onclick="toggleComplete('${list[i].id}')">Check</button>
-                    <button onclick="deleteTask('${list[i].id}')">Delete</button>
-                </div>
-            </div>`;
-        }else {
-            resultHTML += `
-            <div class="task">
-                <div>${list[i].taskContent}</div>
-                <div>
-                    <button onclick="toggleComplete('${list[i].id}')">Check</button>
-                    <button onclick="deleteTask('${list[i].id}')">Delete</button>
-                </div>
-            </div>`;
+
+        const pinClass = list[i].isPinned ? "pinned" : "pin" ;
+        const taskClass = list[i].isComplete ? "task-done" : "" ;
+
+        resultHTML += `
+        <div class="task">
+            <div id="pin-marker" class="${pinClass}" onclick="pinMarker('${list[i].id}')"></div>
+            <div class="${taskClass}">${list[i].taskContent}</div>
+            <div>
+                <button onclick="toggleComplete('${list[i].id}')">Check</button>
+                <button onclick="deleteTask('${list[i].id}')">Delete</button>
+            </div>
+        </div>`;
         }  
-    }
 
     document.getElementById("task-board").innerHTML = resultHTML;
     taskInput.value = ""
+    console.log(taskList)
+    console.log(resultHTML)
 }
 
 function toggleComplete(id) {
@@ -93,7 +90,20 @@ function toggleComplete(id) {
             break;
         }
     }
-    render() // 값이 업데이트 되면 ui도 업데이트 돼야 하기때문에 해줘야함(자동으로 ui도 업데이트 해주는건 리액트)
+    filter() // 값이 업데이트 되면 ui도 업데이트 돼야 하기때문에 해줘야함(자동으로 ui도 업데이트 해주는건 리액트)
+}
+
+function pinMarker(id){
+    for(let i = 0; i<taskList.length; i++){
+        if(taskList[i].id == id){
+            taskList[i].isPinned = !taskList[i].isPinned;
+
+            const removeTask = taskList.splice(i, 1)[0];
+            taskList.unshift(removeTask);
+            break;
+        }
+    }
+    filter()
 }
 
 function deleteTask(id){
