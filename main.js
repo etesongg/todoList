@@ -30,6 +30,10 @@ function addTask() {
     if (taskInput.value.length == 0){
          return alert("할 일을 입력해주세요")
     }
+    for (let i=0; i<taskList.length; i++){
+        if(taskList[i].taskContent == taskInput.value)
+            return alert("이 할 일은 이미 추가되었습니다!")
+    }
     let task = {
         id: randomIDGenerate(),
         taskContent: taskInput.value,
