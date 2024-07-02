@@ -76,7 +76,7 @@ function toggleComplete(id) {
             break;
         }
     }
-    render()
+    filter()
 }
 
 function deleteTask(id) {
@@ -86,7 +86,7 @@ function deleteTask(id) {
             break;
         }
     }
-  render()
+    filter()
 }
 
 function underLineIndicator(e) {
@@ -96,8 +96,14 @@ function underLineIndicator(e) {
 }
 
 function filter(e){
-    mode = e.target.id;
+    if (e){
+        mode = e.target.id;
+    }else{
+        mode = mode;
+    }
+
     filterList = [];
+
     if (mode === "all"){
         render();
     }else if (mode === "ongoing"){
