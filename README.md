@@ -2,8 +2,6 @@
 
 ## Todo List
 
-![todolist](https://github.com/etesongg/number-guess-game/assets/55964387/29f5fcd5-97a8-4efd-9d0c-4624e6cc1d4f)
-<br/>
 [위 사이트 접속하기](https://todolist-bysong.netlify.app/)
 
 ## 기능

@@ -12,145 +12,69 @@
 
 let taskInput = document.getElementById("task-input");
 let addButton = document.getElementById("add-button");
-let underLine = document.getElementById("under-line");
-let tabs = document.querySelectorAll(".task-taps div");
 let taskList = [];
-let mode = "all";
-let filterList = [];
 
+taskInput.addEventListener("focus", function () {taskInput.value="";})
 addButton.addEventListener("click", addTask);
-tabs.forEach(tabs=>tabs.addEventListener("click", (e)=>underLineIndicator(e)))
-
-
-for(let i=1; i<tabs.length; i++){
-    tabs[i].addEventListener("click", function (event) {
-        filter(event);
-    });
-}
-
-function underLineIndicator(e){
-    underLine.style.left = e.currentTarget.offsetLeft + "px";
-    underLine.style.width = e.currentTarget.offsetWidth + "px";
-    underLine.style.top = e.currentTarget.offsetHeight + "px";
-}
 
 function addTask() {
-    let task = {
-        id: randomIDGenerate(),
-        taskContent: taskInput.value,
-        isComplete: false,
-        isPinned: false
-    }
-    if(taskInput.value == ""){
-        window.alert("내용을 입력해주세요.")
-    }else{
-    taskList.push(task);
-    render()
-    }
+  let task = {
+    id: randomIDGenerate(),
+    taskContent: taskInput.value,
+    isComplete: false
+  };
+  taskList.push(task);
+  render()
+  console.log(task)
 }
 
 function render() {
-    // 1. 내가 선택한 탭에 따라서
-    // 2. 리스트를 달리 보여준다
-    let list = []
-    let resultHTML = '';
-    
-    if(mode === "all"){
-        list = taskList
-    }else if(mode == "ongoing" || mode === "done"){
-        list = filterList
+  let resultHTML = "";
+    for(let i=0; i<taskList.length; i++){
+        if(taskList[i].isComplete == true){
+            resultHTML += `
+            <div class="task">
+                <div class="task-done">
+                    ${taskList[i].taskContent}
+                </div>
+                <div>
+                    <button onclick="toggleComplete('${taskList[i].id}')">Check</button>
+                    <button onclick="deleteTask()">Delete</button>
+                </div>
+            </div>`
+        }else{
+            resultHTML += `
+        <div class="task">
+            <div>
+                ${taskList[i].taskContent}
+            </div>
+            <div>
+                <button onclick="toggleComplete('${taskList[i].id}')">Check</button>
+                <button onclick="deleteTask('${taskList[i].id}')">Delete</button>
+            </div>
+        </div>`
+        }
+  
     }
 
-    for(let i=0; i<list.length; i++) {
-
-        const pinClass = list[i].isPinned ? "pinned" : "pin" ;
-        const taskClass = list[i].isComplete ? "task-done" : "" ;
-
-        resultHTML += `
-        <div class="task">
-            <div id="pin-marker" class="${pinClass}" onclick="pinMarker('${list[i].id}')"></div>
-            <div class="${taskClass}">${list[i].taskContent}</div>
-            <div>
-                <button class="btn btn-secondary" onclick="toggleComplete('${list[i].id}')">Check</button>
-                <button class="btn btn-secondary" onclick="deleteTask('${list[i].id}')">Delete</button>
-            </div>
-        </div>`;
-        }  
-
     document.getElementById("task-board").innerHTML = resultHTML;
-    taskInput.value = ""
-    console.log(taskList)
-    console.log(resultHTML)
 }
 
 function toggleComplete(id) {
     for(let i=0; i<taskList.length; i++){
         if(taskList[i].id == id){
-            taskList[i].isComplete = !taskList[i].isComplete; // isComplete의 원래의 값의 반대로 입력함
+            taskList[i].isComplete = !taskList[i].isComplete;
             break;
         }
     }
-    filter() // 값이 업데이트 되면 ui도 업데이트 돼야 하기때문에 해줘야함(자동으로 ui도 업데이트 해주는건 리액트)
+    render()
 }
 
-function pinMarker(id){
-    for(let i = 0; i<taskList.length; i++){
-        if(taskList[i].id == id){
-            taskList[i].isPinned = !taskList[i].isPinned;
-
-            const removeTask = taskList.splice(i, 1)[0];
-            taskList.unshift(removeTask);
-            break;
-        }
-    }
-    filter()
-}
-
-function deleteTask(id){
-    for(let i=0; i<taskList.length; i++){ 
-        if(taskList[i].id == id){
-            taskList.splice(i, 1)
-            break;
-        }
-    }
-    filter()
-}
-
-function filter(event){
-    if(event){
-        mode = event.target.id
-    }else{
-        mode = mode
-    }
-
-    filterList = []
-
-    if(mode === "all"){
-        render()
-    }else if(mode === "ongoing"){
-        for(let i=0; i<taskList.length; i++){
-            if(taskList[i].isComplete == false){
-                filterList.push(taskList[i])
-            }
-        }
-        render();
-    }else if(mode === "done"){
-        for(let i=0; i<taskList.length; i++){
-            if(taskList[i].isComplete == true){
-                filterList.push(taskList[i])
-            }
-        }
-        render();
-    }
+function deleteTask(id) {
+  taskList.pop(taskList.id == id);
+  render()
 }
 
 function randomIDGenerate() {
     return '_' + Math.random().toString(36).substr(2, 9);
-    // 출처 https://gist.github.com/CoralSilver/afd60a5a423168d0d4a0f996ad021384
-}
-
-function enterkey() {
-    if(window.event.keyCode == 13){
-        addTask()
-    }
 }

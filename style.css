@@ -1,45 +1,28 @@
-@font-face {
-    font-family: 'SDSamliphopangche_Outline';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-h1{
-    font-family: 'SDSamliphopangche_Outline';
-}
-
 body {
-    margin: 0;
-    background-image: url("images/background.webp");
+    background-image: url(images/background-img.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .container {
     background-color: white;
-    min-height: 100vh; 
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; 
-}
-
-.input-area {
-    margin-bottom: 5px;
+    margin-top: 11%;
+    min-height: 100vh;
+    min-width: 70vh;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .task-area {
     border: 1px solid lightgray;
 }
 
-#task-input {
-    height: 36px;
-}
-
-.task-taps {
+.task-tabs  {
     display: flex;
     border-bottom: 1px solid lightgray;
     position: relative;
 }
-.task-taps div {
+
+.task-tabs div {
     padding: 1em;
 }
 
@@ -47,11 +30,10 @@ body {
     background-color: pink;
     position: absolute;
     height: 4px;
-    width: 0px;
-    top: 0px;
+    width: 60px;
     left: 0px;
+    top: 54px;
     padding: 0px;
-    transition: 0.5s; /* 부드럽게 넘어감 */
 }
 
 .task {
@@ -61,38 +43,5 @@ body {
 }
 
 .task-done {
-    text-decoration: line-through; 
-}
-
-.task-taps div {
-    cursor: pointer;
-}
-
-#pin-marker {
-    width: 20px;
-    height: 20px;
-    background-size: cover;
-    cursor: pointer;
-    margin-left: 6px;
-    margin-top: 2px;
-}
-
-.pinned {
-    background-image: url(images/pinned.png);
-}
-
-.pin {
-    background-image: url(images/pin.png);
-}
-
-
-
-.license{
-    text-align: right;
-    color: gray;
-}
-
-.license a{
-    text-decoration: none; /* 링크의 밑줄 제거 */  
-    color: inherit; /* 링크의 색상 제거 */
+    text-decoration: line-through;
 }
