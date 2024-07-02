@@ -25,6 +25,7 @@ h1 {
     background-color: white;
     margin-top: 11%;
     min-height: 90vh;
+    width: 86%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
@@ -53,7 +54,7 @@ h1 {
 }
 
 #under-line {
-    background-color: rgb(172, 194, 132);
+    background-color: rgb(106, 126, 144);
     position: absolute;
     height: 2.5px;
     left: 0px;
@@ -66,10 +67,16 @@ h1 {
     display: flex;
     justify-content: space-between;
     padding: 1em;
+
+}
+
+.task-success {
+    background: linear-gradient(to right, rgb(181, 198, 217) 80%, transparent 80%);
 }
 
 .task-done {
     text-decoration: line-through;
+    
 }
 
 .task button {
