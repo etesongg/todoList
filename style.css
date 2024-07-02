@@ -9,6 +9,8 @@ body {
     background-image: url(images/background-img.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vmin; 
+    width: 100vmin; 
 }
 
 h1 {
@@ -77,14 +79,11 @@ h1 {
     width: 40px; 
     background-color: white; 
     border: none; 
+    color: black;
 }
 
 #add-button {
     background-color: white; 
-    border: none;   
+    border: none;
+    color: black;   
 }
-
-/* .task-success {
-    background-color: lightgray;
-} */
-
