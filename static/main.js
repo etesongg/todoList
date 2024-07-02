@@ -37,7 +37,8 @@ function addTask() {
     let task = {
         id: randomIDGenerate(),
         taskContent: taskInput.value,
-        isComplete: false
+        isComplete: false,
+        isPinned: false
     };
     taskList.push(task);
     render()
@@ -57,12 +58,14 @@ function render() {
             let task = list[i];
             let isComplete = task.isComplete? "task-done": "";
             let checkIcon = task.isComplete? '<i class="fa-solid fa-square-check fa-xl"></i>': '<i class="fa-regular fa-square-check fa-xl"></i>'
+            let pinIcon = task.isPinned? "pinned": "pin";
 
             resultHTML += `
             <div class="task"> 
-                    <div class=${isComplete}>
-                        ${list[i].taskContent}
-                    </div>   
+                <div class=${pinIcon} onclick="pinMarker('${list[i].id}')"></div>
+                <div class=${isComplete}>
+                    ${list[i].taskContent}
+                </div>   
                 <div>
                     <button onclick="toggleComplete('${list[i].id}')">${checkIcon}</button>
                     <button onclick="deleteTask('${list[i].id}')"><i class="fa-regular fa-square-minus fa-xl"></i></button>
@@ -87,6 +90,20 @@ function deleteTask(id) {
     for(let i=0; i<taskList.length; i++){
         if(taskList[i].id == id){
             taskList.splice(i,1);
+            break;
+        }
+    }
+    filter()
+}
+
+function pinMarker(id){
+    for(let i=0; i<taskList.length; i++){
+        if(taskList[i].id == id){
+            taskList[i].isPinned = !taskList[i].isPinned;
+            
+            let pinTask = taskList.splice(i,1)[0];
+            console.log(pinTask)
+            taskList.unshift(pinTask)
             break;
         }
     }

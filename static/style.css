@@ -84,3 +84,15 @@ h1 {
     border: none;
     color: black;   
 }
+
+.pin {
+    width: 40px;
+    background-image: url(/static/images/pin.png);
+    background-repeat: no-repeat;
+}
+
+.pinned {
+    width: 40px;
+    background-image: url(/static/images/pinned.png);
+    background-repeat: no-repeat;
+}
