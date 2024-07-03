@@ -61,12 +61,15 @@ function render() {
             let pinIcon = task.isPinned? "pinned": "pin";
 
             resultHTML += `
-            <div class="task"> 
-                <div class=${pinIcon} onclick="pinMarker('${list[i].id}')"></div>
-                <div class=${isComplete}>
-                    ${list[i].taskContent}
-                </div>   
-                <div>
+            <div class="task ${isComplete}"> 
+                <div class="task-content-area">
+                    <div class=${pinIcon} onclick="pinMarker('${list[i].id}')"></div>
+                    <div>
+                        ${list[i].taskContent}
+                    </div> 
+                </div>
+
+                <div class="task-button-area">
                     <button onclick="toggleComplete('${list[i].id}')">${checkIcon}</button>
                     <button onclick="deleteTask('${list[i].id}')"><i class="fa-regular fa-square-minus fa-xl"></i></button>
                 </div>

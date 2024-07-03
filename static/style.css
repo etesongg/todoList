@@ -40,6 +40,7 @@ h1 {
 
 .task-area {
     border: 1px solid lightgray;
+    border-bottom: 1px solid white;
 }
 
 .task-tabs  {
@@ -66,17 +67,22 @@ h1 {
 .task {
     display: flex;
     justify-content: space-between;
-    padding: 1em;
-
+    /* padding: 1em; */
+    border-bottom: 1px solid lightgray;
 }
 
-.task-success {
-    background: linear-gradient(to right, rgb(181, 198, 217) 80%, transparent 80%);
+.task-content-area {
+    display: flex;
+    padding: 1em;
+}
+
+.task-button-area {
+    display: flex;
 }
 
 .task-done {
-    text-decoration: line-through;
-    
+    text-decoration: line-through;  
+    background-color: rgb(181, 198, 217);
 }
 
 .task button {
