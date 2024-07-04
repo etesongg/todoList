@@ -18,13 +18,21 @@ let taskList = [];
 let mode = "all";
 let filterList = [];
 
-taskInput.addEventListener("focus", function () {taskInput.value="";});
-addButton.addEventListener("click", addTask);
-menus.forEach((menu) => menu.addEventListener("click", (e) => underLineIndicator(e)))
+document.addEventListener("DOMContentLoaded", () => {
+    menus.forEach((menu) => menu.addEventListener("click", (e) => underLineIndicator(e.currentTarget)));
 
-for(let i=1; i<menus.length; i++){
+    const initialMenu = menus[1];
+    underLineIndicator(initialMenu);
+});
+
+for (let i = 1; i < menus.length; i++) {
     menus[i].addEventListener("click", (e) => filter(e));
 }
+
+taskInput.addEventListener("focus", function () {taskInput.value="";});
+addButton.addEventListener("click", addTask);
+
+
 
 function addTask() {
     if (taskInput.value.length == 0){
@@ -113,12 +121,6 @@ function pinMarker(id){
     filter()
 }
 
-function underLineIndicator(e) {
-    underLine.style.left = e.currentTarget.offsetLeft + "px";
-    underLine.style.width = e.currentTarget.offsetWidth + "px";
-    underLine.style.top = e.currentTarget.offsetTop + e.currentTarget.offsetHeight + "px";
-}
-
 function filter(e){
     if (e){
         mode = e.target.id;
@@ -145,6 +147,12 @@ function filter(e){
         }
         render();
     }
+}
+
+function underLineIndicator(menu) {
+    underLine.style.left = menu.offsetLeft + "px";
+    underLine.style.width = menu.offsetWidth + "px";
+    underLine.style.top = menu.offsetTop + menu.offsetHeight + "px";
 }
 
 function randomIDGenerate() {
