@@ -91,12 +91,13 @@ h1 {
     color: black;
 }
 
-.task-button-area > button:nth-child(2) {
-    padding-right: 1em;
-}
-
 .task-button-area > button:nth-child(1) {
     padding-left: 0.8em;
+    padding-right: 0em;
+}
+
+.task-button-area > button:nth-child(2) {
+    padding-right: 1em;
 }
 
 #add-button {
