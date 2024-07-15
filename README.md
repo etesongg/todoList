@@ -1,7 +1,8 @@
 # Todo List 사이트 제작 ([javascript-study](https://github.com/etesongg/javascript-study) 2-2)
 
 ## Todo List
-
+![todolist](https://github.com/user-attachments/assets/e53c0650-b12e-4ee4-a9aa-a8007266c8dc)
+<br/>
 [위 사이트 접속하기](https://todolist-bysong.netlify.app/)
 
 ## 기능
