@@ -5,6 +5,12 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'MaruBuri';
+    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.eot);
+    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff2) format("woff2"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.ttf) format("truetype");
+}
+
 body {
     background-image: url(images/background-img.jpg);
     background-repeat: no-repeat;
@@ -83,6 +89,12 @@ h1 {
 .task-done {
     text-decoration: line-through;  
     background-color: rgb(181, 198, 217);
+}
+
+#task-board {
+    font-family: 'MaruBuri';
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .task button {

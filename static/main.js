@@ -32,8 +32,6 @@ for (let i = 1; i < menus.length; i++) {
 taskInput.addEventListener("focus", function () {taskInput.value="";});
 addButton.addEventListener("click", addTask);
 
-
-
 function addTask() {
     if (taskInput.value.length == 0){
          return alert("할 일을 입력해주세요")
@@ -85,6 +83,7 @@ function render() {
         }
 
         document.getElementById("task-board").innerHTML = resultHTML;
+        taskInput.value = "";
 }
 
 function toggleComplete(id) {
